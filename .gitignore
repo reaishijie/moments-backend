@@ -1,0 +1,14 @@
+node_modules
+
+# Keep environment variables out of version control
+.env
+
+# 构建产物
+dist
+
+# 本地存储模式的上传文件（运行时数据）
+public/upload
+!public/.gitkeep
+
+# macOS
+.DS_Store

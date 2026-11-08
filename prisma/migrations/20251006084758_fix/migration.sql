@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE `link` MODIFY `logo` VARCHAR(255) NULL,
+    MODIFY `brief` VARCHAR(255) NULL,
+    MODIFY `status` TINYINT UNSIGNED NOT NULL DEFAULT 0,
+    MODIFY `deleted_at` TIMESTAMP(0) NULL;

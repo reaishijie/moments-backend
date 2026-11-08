@@ -1,0 +1,61 @@
+{
+  "name": "moments-api",
+  "version": "2.0.0",
+  "main": "src/bootstrap.ts",
+  "type": "module",
+  "packageManager": "pnpm@11.8.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
+    "prebuild": "pnpm run clean",
+    "build": "prisma generate && tsc",
+    "dev": "tsx watch src/bootstrap.ts",
+    "start": "node dist/bootstrap.js",
+    "start:pm2": "pm2 start dist/bootstrap.js",
+    "db:install": "prisma generate && prisma migrate deploy && node dist/seed.js",
+    "db:setup": "prisma generate && prisma migrate deploy && tsx src/seed.ts",
+    "db:install2": "prisma generate && PRISMA_SCHEMA_DISABLE_ADVISORY_LOCK=1 prisma migrate deploy && node dist/seed.js",
+    "db:setup2": "prisma generate && PRISMA_SCHEMA_DISABLE_ADVISORY_LOCK=1 prisma migrate deploy && tsx src/seed.ts"
+  },
+  "keywords": [
+    "瞬刻",
+    "moments",
+    "api",
+    "express",
+    "prisma"
+  ],
+  "author": "486",
+  "license": "Apache-2.0",
+  "description": "瞬刻 Moments 后端 API（Express + Prisma + MySQL）",
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/cookie-parser": "^1.4.10",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/multer": "^2.0.0",
+    "@types/multer-s3": "^3.0.3",
+    "@types/node": "^24.1.0",
+    "@types/nodemailer": "^7.0.1",
+    "tsx": "^4.20.5",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.899.0",
+    "@prisma/client": "6.19.3",
+    "prisma": "6.19.3",
+    "axios": "^1.11.0",
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.2",
+    "multer-s3": "^3.0.1",
+    "nanoid": "^5.1.5",
+    "nodemailer": "^9.0.1"
+  }
+}
